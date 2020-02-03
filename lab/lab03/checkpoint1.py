@@ -20,7 +20,7 @@ def init_array(n, p):
 
 
 def ask_array():
-    n = input("Number of specific nodes:")
+    n = input("Number of specific nodes: ")
     n = int(n)
     p = input("Probability: ")
     p = float(p)
@@ -42,4 +42,5 @@ def print_matrix(array):
 
 if __name__ == '__main__':
     # print
+    print("Generating Sample Graph...")
     print_matrix(ask_array())

@@ -45,6 +45,6 @@ def strong_connected(array, thold):
 
 
 if __name__ == '__main__':
-    thold = input("thresholdt(integer): ")
+    thold = input("threshold (integer): ")
     thold = int(thold)
-    print(strong_connected(ask_array, thold))
+    print(strong_connected(ask_array(), thold))
