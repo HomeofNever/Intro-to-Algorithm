@@ -24,7 +24,7 @@ def analysis(c_bottom, c_top, step_size, thold, num, n, equation=lambda c, n: c 
     c_data = []
     p_data = []
     for current_c in np.arange(c_bottom, c_top, step_size):
-        p = current_c / n
+        p = equation(current_c, n)
 
         scc = 0
         for i in range(0, num):
