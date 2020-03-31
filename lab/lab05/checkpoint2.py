@@ -32,7 +32,7 @@ def dp(x, w):
         for j in range(1, w + 1):
             # Base Case 2: The current weight/value pair can be added to current testing weight
             if x[i - 1][0] <= j:
-                table[i][j] = max(x[i - 1][1] + table[i - 1][w - x[i - 1][0]], table[i - 1][w])
+                table[i][j] = max(x[i - 1][1] + table[i - 1][j - x[i - 1][0]], table[i - 1][j])
             # Base Case 3, The current weight is out of current testing weight
             else:
                 table[i][j] = table[i - 1][j]
