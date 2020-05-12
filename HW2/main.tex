@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds, automata, positioning, arrows}
+\usetikzlibrary{arrows}
+\usepackage{listings}
+\usetikzlibrary{graphs}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{HW2}
+\author{Xinhao Luo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{DPV Problem 3.9}
+
+\textbf{Algorithm}
+
+\begin{enumerate}[Step 1]
+    \item Loop through each node, and store length of their list into degree[n]
+    \item Loop through each of node, and sum up each degree[n] in the adjacent list and store it in twodegree[n]
+\end{enumerate} 
+
+\textbf{Runtime}
+
+\begin{enumerate}[Step 1]
+    \item This step, get the length of the list should be O(1). The for loop should be O(n), assume n nodes, so the time complexity of this step should be O(n)
+    \item In this step, getting the sum of degree of one node should be O(e), assume e is the number of edge one node have. However, the total number of this loop in total will not exceed 2t, assume t is the total number of edge the graph have, so the time complexity of this step should be O(2t)
+    \item [conclusion] The time complexity of this algorithm is O(n + t), which can be solved in linear time.
+\end{enumerate}
+
+
+\section{DPV Problem 3.15 (all parts)}
+
+\begin{enumerate}[a)]
+    \item Suppose that each intersection as node in graph, and road as edge. If we can prove that the graph generated based on this reflection is strongly connect, then the major is right. \\\\
+    \textbf{Method}
+    \begin{enumerate}[Step 1]
+        \item Choose a random node s in the graph
+        \item Run a BFS start from node s, and if any node is not reachable, return false
+        \item Reverse the directions of all edge in the graph
+        \item Run BFS again from node s, and if any node is not reachable, return false, otherwise true
+    \end{enumerate}
+    \textbf{Runtime}
+    \begin{enumerate}[Step 1]
+        \item O(1) for choosing a node
+        \item Time complexity for BFS is O(e + n), assume e is the total number of edges and n is the total number of vertices the graph have, a linear time
+        \item O(e), assume e is the number of edge of the graph
+        \item Time complexity for BFS is O(e + n) again
+        \item [Conclusion] The overall time complexity is O(e + 2n), a linear time, so this problem can be solved in linear time
+    \end{enumerate}
+    \item Same as part a), formulate intersection as node and road as edge. We now have a given vertex s with an out degree. \\\\
+    \textbf{Algorithm}
+    \begin{enumerate}[Step 1]
+        \item Start from vertex s, do an BFS, and keep an record of node[] that have visited during searching
+        \item reverse the direction of all edges in the graph
+        \item Do BFS again, and remove corresponded node in node[] when searching. If there is node that does not include in the list, return false. If all matched, return true
+    \end{enumerate} 
+    \textbf{Runtime}
+    \begin{enumerate}[Step 1]
+        \item Time complexity for BFS is O(e + n), assume e is the total number of edges and n is the total number of vertices the graph have, a linear time
+        \item Reverse each edge in the graph should be O(e) 
+        \item Time complexity for BFS is O(e + n), and removing specific node from a list can be O(1) if using e.g. hashset
+        \item [Conclusion] The overall time complexity will be O(e + n), a linear time
+    \end{enumerate}
+\end{enumerate}
+
+\section{DPV Problem 3.22}
+
+\textbf{Algorithm}
+
+\begin{enumerate}[Step 1]
+    \item Pick a random node s from the graph
+    \item Start DFS and keep track of the pre and post value of each node
+    \item Find the node l with the largest post value 
+    \item start doing DFS from node l, mark every node alone the path
+    \item check if all node is marked, true if all marked, false otherwise.
+\end{enumerate}
+
+\textbf{Runtime}
+
+\begin{enumerate}[Step 1]
+    \item O(1)
+    \item O(n + e) for running DFS and mark node, assume n is the number of node in the graph and e for the number of edges
+    \item O(n) for finding node with largest post value in the graph
+    \item O(n + e) again for DFS
+    \item O(n) for checking all node's mark
+    \item [Conclusion] O(n + e), a linear time solution
+\end{enumerate}
+
+\section{DPV Problem 3.23}
+
+\textbf{Algorithm}
+\begin{enumerate}[Step 1]
+    \item Set up an array of path[], initialize with n of zeros, assume n is the number of node in the graph, and set path[t] = 1
+    \item Start DFS from node s, and each time crossing an edge connected node u to v, set path[v] += path[u]
+    \item Return path[s]
+\end{enumerate}
+
+\textbf{Runtime}
+\begin{enumerate}[Step 1]
+    \item O(n) for initialize the array
+    \item O(n + e) for DFS, assume n is the number of node in the graph and e is the number of edge
+    \item O(1) for accessing value in array
+    \item [Conclusion] The overal time complexity is O(n + e), a linear time.
+\end{enumerate}
+
+\section{DPV Problem 3.24}
+
+\textbf{Algorithm}
+\begin{enumerate}[Step 1]
+    \item Create a array order[] with size n, assume n is the number of node in the graph, and pick a random node s
+    \item from node s, find the topological order of the graph, and store in order[]
+    \item for each node in order[], find if current node has connection over the next node in order[]. If not, return false, otherwise true.
+\end{enumerate}
+
+\textbf{Runtime}
+\begin{enumerate}[Step 1]
+    \item O(n) for creating array and O(1) for picking a random node
+    \item O(n + e) for building topological order, assume e is the number of edge of the graph
+    \item O(n) for walking through the order[] and check order
+    \item [Conclusion] O(n + e) is a linear time solution
+\end{enumerate}
+
+\end{document}

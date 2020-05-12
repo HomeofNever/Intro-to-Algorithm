@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Lab01}
+\author{Xinhao Luo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+
+Give sorted list (with length n), find if number (m) exist
+
+Start with high = n - 1, low = 0
+
+\begin{enumerate}
+    \item check if low is larger than high
+        \begin{itemize}
+            \item if true, stop and RETURN FALSE
+            \item else, continue
+        \end{itemize}
+    \item check if that number at index [i = (high + low) // 2] equals target (m)
+        \begin{itemize}
+            \item if not, check if that number is smaller than the target (m)
+                \begin{itemize}
+                    \item if true, set low = i + 1, and back to step 1
+                    \item if false, set high = i - i, and back to step 1
+                \end{itemize}
+            \item else, stop and RETURN TRUE
+        \end{itemize}
+\end{enumerate}
+
+
+\section{Problem 2}
+
+an unsorted and immutable array of size n−1 that contains all integers from 1 to n except one
+
+\begin{enumerate}
+    \item calculate sum using sum rules (1 + n) * (n - 1) / 2
+    \item for each number in the array, deduct the number from the sum
+    \item return the number left
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Lab01}
+\author{Xinhao Luo}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+
+\begin{enumerate}[1)]
+    \item 
+        \begin{enumerate}[1)]
+            \item 
+                \begin{itemize}
+                    \item A
+                    \item A | C H
+                    \item A | C H | G F D
+                    \item A | C H | G F D | I
+                \end{itemize}
+            \item 
+                \begin{itemize}
+                    \item G 
+                    \item G | I 
+                    \item G | I | H
+                    \item G | I | H | F
+                    \item G | I | H | F |J
+                    \item G | I | H | F | J | C
+                    \item \item G | I | H | F | J | C | D
+                \end{itemize}
+        \end{enumerate}
+    \item 
+        \begin{enumerate}[1)]
+            \item 
+                \begin{itemize}
+                    \item A 
+                    \item A | BD
+                    \item A | BD | CEH
+                    \item A | BD | CEH | FGI
+                \end{itemize}
+            \item 
+                \begin{itemize}
+                    \item G 
+                    \item G | D
+                    \item G | D | H
+                    \iten G | D | H | FI
+                \end{itemize}
+        \end{enumerate}
+    \item
+        \begin{enumerate}[1)]
+            \item 
+                \begin{itemize}
+                    \item A 
+                    \item A | BCF
+                    \item A | BCF | EDG
+                    \item A | BCF | EDG | H
+                \end{itemize}
+            \item 
+                \begin{itemize}
+                    \item G
+                \end{itemize}
+        \end{enumerate}
+\end{enumerate}
+
+add a mark on the node passed, and end if no way to go
+find the next unmark one and started next round
+
+\section{Problem 2}
+
+Set state as nodes, use HashTable. Key => states, value => list of states connect
+hash method: only applied on list
+
+\begin{enumerate}
+    \item 3 states, started condition
+    \item Identify which node is the desired state (match by state)
+    \item 6 states from 1 state
+\end{enumerate}
+
+\section{Problem 3}
+
+Delete that given edge, and start from the either node of that edge, use BFS to find if there is a path lead to another node of the edge.
+
+
+\end{document}
